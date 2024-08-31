@@ -1,0 +1,146 @@
+---
+title: "Tugas 1 VDI"
+author: "Syadza Puspadari Azhar"
+date: "2024-08-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Pendahuluan
+
+Jurnal ini membahas tentang bagaimana cara membuat visualisasi data menjadi lebih efisien dan efektif.
+
+Visualisasi data itu sendiri akan mengubah data yang masih abstrak menjadi bentuk visual sehingga mempermudah kita dalam mengerti hasil dari analisis data yang telah kita lakukan.
+
+Alur dari visualisasi data meliputi:
+
+1.  **Data import**, mengambil data dari sumber
+2.  **Data preparation**, mempersiapkan data (normalisasi, data cleaning, dll)
+3.  **Data manipulation**, memilih data yang ingin divisualisasikan, bisa juga dengan melakukan operasi lain seperti operasi join
+4.  **Mapping**, memetakan data yang telah dimanipulasi ke dalam bentuk geometri (seperti garis atau titik) beserta dengan atributnya (warna, posisi, atau ukuran)
+5.  **Rendering** , yaitu mengubah menjadi bentuk visual
+
+Berdasarkan alur di atas, terdapat 3 cara agar visualisasi data yang kita buat lebih efisien dan efektif:
+
+1.  **Spesifikasi visualisasi**, berupa cara yang kita lakukan untuk menyampaikan apa yang kita inginkan. Dalam jurnal tersebut, disebutkan 2 cara yaitu:
+
+    a\. ***Self-completeness*** penting bagi kita untuk mengetahui bagaimana cara menghasilkan visualisasi data
+
+    b\. ***Language design perspective*** berkaitan dengan mapping pada alur yang sebelumnya telah dijelaskan, yaitu dengan menentukan bagaimana menghubungkan informasi yang berbeda ke elemen visual.
+
+2.  **Pendekatan efisien untuk visualisasi data**, proses pembuatan dari visualisasi data harus efisien dan dapat diakses terutama pada manipulasi data dan mapping.
+
+3.  **Rekomendasi visualisasi data**, memahami data apa yang harus divisualisasikan, cerita apa yang ingin disampaikan, serta bagaimana cara memvisualisasikannya.
+
+## Spesifikasi Visualisasi
+
+### 1. Spesifikasi pada Visualisasi Data
+
+Secara umum, bahasa visualisasi data berisikan 3 bagian yaitu:
+
+a\. **Data**, terdiri atas record (data yang ingin divisualisasikan) dan transformation (operasi yang dilakukan untuk mengubah record data yang spesifik)
+
+b\. **Marks**, terdiri atas tipe dari visualisasi data (seperti bar, line, atau point), size atau ukuran dari visualisasi, legend (informasi), miscellaneuos (atribut seperti tinggi dan warna dari grafik)
+
+c\. **Mapping**, memetakan data
+
+### **2. Kategori dari bahasa visualisasi data**
+
+a\. **Bahasa tingkat rendah**, merupakan bahasa yang perlu dirincikan elemen dari pemetaannya
+
+b\. **Bahasa tingkat tinggi**, penggunaan bahasanya lebih abstrak.
+
+### 3. Operasi Visual Berbasis Antarmuka Pengguna (GUI)
+
+Visualisasi ini bersifat interaktif. Dalam eksplorasi data, kita perlu untuk terus memperbaiki spesifikasi (seperti menamba, menghapus, atau mengubah atribut, ataupun mengganti jenis grafik) dari visualisasi dalam eksplorasi sampai mendapatkan visualisasi yang kita inginkan.
+
+### 4. Spesifikasi yang Kurang Terspesifikasi
+
+Spesifikasi yang kurang terspesifikasi ini maksudnya ialah ketika pengguna hanya memaparkan beberapa petunjuk, dimana visualisasi seharusnya dapat mengartikan input yang kurang spesifik tersebut dengan berbagai macam cara.
+
+Ada 3 tipe petunjuk yang dimaksud, yaitu:
+
+a\. ***Reference-based***, dimana pengguna memberikan referensi dari visualisasi, lalu sistem akan merekomendasikan visualisasi berdasarkan referensi yang diberikan.
+
+b\. ***Keyword-based***, seperti pada gaya pencarian Google. Dimana sistem menerima inputan keyword sebagai goals dari melihat data, setelah itu memberikan rekomendasi visualisasinya.
+
+c\. ***Natural language-based***, yang mempertimbangkan konteks inputan dari pengguna dan status sistem dalam eksplorasi data namun bukan hanya satu kali seperti pada *kerword-based*
+
+## Pendekatan yang Efisien Untuk Visualisasi Data
+
+### 1. Visualisasi Data yang Akurat
+
+a\. **Terjemahan Query**, cara yang natural untuk menggunakan kembali sistem DBMS adalah dengan menerjemahkan query dari visualisasi menjadi query yang dapat diterima oleh sistem.
+
+b\. **Mengintegrasi sistem visualisasi dengan DBMS**, penggunaan terjemahan query juga memiliki beberapa kekurangan, salah satu contohnya adalah banyak fungsi yang berulang. Kekurangan tersebut dapat diatasi dengan mengintegrasi pengembalian data dan mengubah secara bersamaan untuk mempercepat proses dari pembuatan visualisasi.
+
+c\. **Penyimpanan berbasis kolom**, dalam visualisasi user biasanya hanya akan tertarik kepada beberapa kolom saja. Maka dari itu, penyimpanan berbasis kolom akan menghasilkan performa yang lebih baik dibandingkan dengan penyimpanan berbasis baris.
+
+d\. **Index** sering digunakan untuk meningkatkan performa pencarian dengan memotong jumlah record atau baris dalam tabel yang ingin diperiksa. Maka, hal ini memiliki peran yang penting dalam meningkatkan performa visualisasi data.
+
+e\. **Komputasi paralel**, cara ini juga sering digunakan pada proses query dalam sistem visualisasi data. Dimana memberikan arsiterktur multi-threading untuk eksplorasi visualisasi yang interaktif.
+
+d\. **Prediksi dan prefetching**, memprediksi data yang user mungkin akan tertarik lalu melakukan prefeching atau menyimpan sementara data yang mungkin akan digunakan pada langkah selanjutnya pada saat melakukan eksplorasi dapat mempercepat proses eksplorasi dan teknik yang telah digunakan dalam beberapa sistem visualisasi. Teknologi prediksi dan prefetching dapat dibagi menjadi 2 tipe yaitu berdasarkan visualisasi yang sedang dilakukan dan berdasarkan data historical (arah, fokus, dan vektor).
+
+### 2. Aproksimasi Visualisasi Data
+
+a\. **Aproximate Query Processing (AQP)-based**, untuk menghasilkan perkiraan visualisasi dalam waktu yang interaktif.
+
+b\. **Incremental Sampling-based**, sistem akan menghasilkan perkiraan visualisasi dari sampel dataset yang diberikan dengan cepat.
+
+c\. **Human Preception-based** akan menghentikan sampling ketika tidak ada perbedaan yang signifikan dari perspektif manusia antara aproksimasi visualisasi yang sedang dilakukan dengan visualisasi yang akan didapat dari sampling lebih lanjut.
+
+### 3. Visualisasi Data Progresif
+
+a\. **Range-based binning**, visualisasi dengan resolusi yang berbeda dengan menggati ukuran dari bin.
+
+b\. **Range and content-based binning**, user dapat mengeksplor detail dari data dengan operasi roll-up atau drill-down untuk menuju langkah selanjutnya.
+
+## Rekomendasi Visualisasi
+
+### 1. Rekomendasi Berdasarkan Spesifikasi
+
+#### Spesifikasi tidak sempurna
+
+Dalam spesifikasi tidak sempurna, dibagi menjadi 2 metode yang digunakan untuk membuat peringkat dari kandidat visualisasi:
+
+a\. **Rule-based visualization ranking**, akan memberi peringkat kandidat visualisasi berdasarkan aturan yang telah ditentukan sebelumnya. Aturan tersebut terdiri dari aturan statistika dan aturan perceptual.
+
+b\. **Machine learning-based visualization ranking**, sistem akan mengumpulkan data training dari web atau crowdsoourcing lalu melatih model ranking sehingga menghasilkan dua vektor yang dapat dibandingkan mana yang lebih baik.
+
+#### Spesifikasi berdasarkan referensi
+
+a\. Deviation based
+
+b\. Anomaly-based
+
+c\. Similarity-based
+
+### 2. Rekomendasi Berdasarkan Perilaku
+
+Sistem akan menangkap perilaku user saat ini sebagai input, lalu menyimpulkan task yang sedang user lakukan dan merekomendasikan visualisasi yang berguna berdasarkan tasknya.
+
+### 3. Rekomendasi yang Dipersonalisasi
+
+Sistem akan menangkap perilaku historikal user sebagai input untuk merekomendasikan visualisasi menarik yang dipersonalisasi. Terdapat 3 metode rekomendasi visualisasi yang dipersonalisasi, yaitu *collaborative filtering*, *content-based filtering*, dan *hybrid filtering.*
+
+### 4. Kesimpulan
+
+a\. Sistem rekomendasi visualisasi dengan spesifikasi kosong berguna untuk user untuk mengeksplor data dengan cepat jika user tidak begitu familiar dengan data dan visualisasi yang diinginkan
+
+b\. Rekomendasi berdasarkan perilaku dapat merekomendasikan visualisasi berdasarkan task yang disimpulkan, namun terbatas pada pola perilaku yang telah ditentukan sebelumnya, sehingga tidak fleksibel terhadap perilaku acak user.
+
+c\. Rekomendasi yang dipersonalisasi memiliki performa yang berbeda untuk user yang berbeda, karena sistem ini dirancang untuk user yang berbeda berdasarkan perilaku historikalnya.
+
+## Penelitian Lainnya
+
+1.  Data preparation untuk visualisasi data
+2.  Tolok ukur visualisasi data
+3.  Visualisasi data untuk aplikasi yang berhubungan dengan database
+
+## Kesimpulan
+
+Sebagian besar dari sistem visualisasi data bagus dalam artian kemudahan penggunaannya dalam spesifikasi visualisasi data.
